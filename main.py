@@ -6,7 +6,7 @@ app.add_static_files('/assets', 'assets')
 
 with ui.element('div').classes(
     "w-full h-screen flex items-center justify-center bg-slate-950"
-):
+) as boot_screen:
         with ui.card().classes(
     "w-100 items-left"
         ):
