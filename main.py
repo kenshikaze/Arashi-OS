@@ -1,7 +1,5 @@
-from nicegui import ui
+from nicegui import ui, app
 ui.query('body').classes('m-0')
-
-from nicegui import app
 app.add_static_files('/assets', 'assets')
 
 with ui.element('div').classes(
@@ -21,5 +19,20 @@ with ui.element('div').classes(
                 "text-gray-400"
                 )
                 ui.spinner(size='lg')
+
+with ui.element('div').classes(
+     "w-full h-screen text-white" \
+     "background-image: url('/assets/cherry_blossom.jpg)" \
+     " flex flex-col").style( 'background-size: cover background-position: center background-repeat: no-repeat')as desktop_screen:
+     pass
+
+desktop_screen.set_visibility(False)
+
+def finish_boot():
+     boot_screen.set_visibility(False)
+     desktop_screen.set_visibility(True)
+
+ui.timer(1.5, finish_boot,once=True)
+
 
 ui.run()
